@@ -10,16 +10,15 @@ if(file_exists($_dir)){
 }
 else{
     mkdir($_dir, '0777'); #create dir
-    $file = fopen($_dir."\\info.txt", 'w'); #create file
+    $file = $_dir."\\info.txt"; #create file
 
     $blogName=$_POST['blogName']; 
     $userName=$_POST['userName'];  // saving POST data
     $pwd=md5($_POST['pwd']); //crypt password
     $description=$_POST['description'];
 
-    fwrite($file, "Nazwa blogu $blogName\nNazwa użytkownika $userName\nHasło $pwd\nOpis bloga $description\n"); //write info to file
-
-    fclose($file);
+    file_put_contents($file, "Nazwa blogu $blogName\nNazwa użytkownika $userName\nHasło $pwd\nOpis bloga $description\n"); //write info to file
+    
 
     header("refresh:5; url=$url");
     echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
