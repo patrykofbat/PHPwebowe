@@ -3,7 +3,7 @@
 #    echo $_field;
 #}
 session_start();
-$_SESSION['pwd'] = $_POST['pwd'];
+$nazwa = $_GET['nazwa'];
 
 ?>
 
@@ -16,16 +16,17 @@ $_SESSION['pwd'] = $_POST['pwd'];
 	<title>Mój blog</title>
 </head>
 <body>
-<?php
-$url = "http://localhost/PHPwebowe/action2.php";
-if($_POST['pwd'] == '123'){
-    header("Location: $url"); // go to other url
-}
-else{
-	header("Location: $url"); // go to other url
-    echo "zle haslo";
-}
-?>
+	<h2>Nazwa blogu</h2>
+	<?php
+	echo "$nazwa";
+	?>
+<br/><br/><br/>
+<p>Dodaj wpis</p>
+<form action = "addwpis.php" method = "post">
+	<textarea name="wpis" style="width:300px; height:100px"></textarea><br/><br/>
+	<input type="submit" value="Dodaj" /><br/><br/>
+    <input type="reset" value="Wyczyść" />
+</form>
     
 	
 </body>

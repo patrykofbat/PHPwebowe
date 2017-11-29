@@ -9,7 +9,8 @@ if(file_exists($_dir)){
     echo "Przykro nam ale nazwa blogu jest juz zajeta, zostaniesz teraz przekierowany do menu głównego.";
 }
 else{
-    mkdir($_dir, '0777'); #create dir
+    $_dir = str_replace(" ","_","$_dir");
+    mkdir($_dir); #create dir
     $file = $_dir."\\info.txt"; #create file
 
     $blogName=$_POST['blogName']; 
