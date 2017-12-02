@@ -1,9 +1,13 @@
 <?php
+require_once "classBlog.php";
+session_start();
 $arrayWithContent = scandir(getcwd());
 $matches;
 $new;
 $i = 1;
 $pattern = "/^\\w+/";
+echo "<pre>";
+print_r($_SESSION);
 
 foreach($arrayWithContent as $file){ // loop through current dir
     if(is_dir($file)){
@@ -23,7 +27,8 @@ foreach($arrayWithContent as $file){ // loop through current dir
     <option value=<?=$blog?>><?=$blog?></option>
     <?php endforeach ?>
 </select>
-<input type="submit" value="Wybierz blog"/>
+<input type="submit" value="Wybierz blog"/><br/><br/>
+<a href="menu.html">Powrót do menu</a>
 
 
 </form>

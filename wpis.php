@@ -15,7 +15,7 @@ $patternHaslo = "/Hasło (.+)/";
 $patternBlog = "/Nazwa blogu (.+)/";
 $flag = true;
 
-foreach($arrayWithContent as $file){ // loop through current dir
+foreach($arrayWithContent as $file){ // loop for blog through current dir
     if(is_dir($file)){
         if(preg_match($pattern, $file, $new) == 1){
             $fileContent = file_get_contents($new[0]."\\info.txt");
@@ -25,14 +25,15 @@ foreach($arrayWithContent as $file){ // loop through current dir
                 $flag = false;
                 if($pwd == $matchesHaslo[1]){ // check pwd
                     preg_match($patternBlog, $fileContent, $matchesBlog); //get name of blog
-                    echo "Zalogowales sie !\n"; 
+                    echo "Zalogowales sie !\n";
+                    echo "<br/>"; 
                     echo "Zaraz zostaniesz przekierowany do wlasnego bloga";
                     $url = $url."?nazwa=$matchesBlog[1]";
-                    echo "$matchesBlog[1]";
                     header("refresh:2; url=$url");
                 }
                 else{
                     echo "Zly login lub haslo\n";
+                    echo "<br/>";
                     echo "Sprobuj ponownie";
                     header("refresh:2; url=$url2");
                 }
