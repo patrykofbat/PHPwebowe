@@ -30,13 +30,14 @@ $attachFormat = substr($explosion[0], 0,strlen($entry)-2);
 
 <?php   $newIter = $iterator-1;
         $blogDir=scandir($nameOfBlog);
+        echo "<h3>Komentarze<br/></h3>";
         foreach($blogDir as $con){
                 $ext = explode(".", $con);
                 if(isset($ext[1])){
                         if($ext[1] == "k"){
                                 if(is_file($nameOfBlog."\\".$con."\\".($newIter))){
                                         $content = file_get_contents($nameOfBlog."\\".$con."\\".($newIter));
-                                        echo "<h3>Komentarze<br/></h3>";
+                                        // echo "<h3>Komentarze<br/></h3>";
                                         echo $content;
                                         echo "<br/><br/>";
                                 }
