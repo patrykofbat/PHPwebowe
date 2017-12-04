@@ -1,33 +1,33 @@
 <?php
 require_once "classBlog.php"; 
 session_start();
+echo "<pre>";
+print_r($_POST);
+$date = getdate();
 $wpis = $_POST["wpis"];
+$explosion = explode("-", $_POST["date"]);
+$timeExp = explode(":", $_POST["time"]);
+print_r($explosion);
+print_r($timeExp);
 $nameOfBlog = $_SESSION["nazwa"];
 $blog = $_SESSION["$nameOfBlog"];
-$date = getdate(); //get date from server
+$uniqueNumber = rand(10, 99);
+$nameOfFile = $explosion[0].$explosion[1].$explosion[2].$timeExp[0].$timeExp[1].$date["seconds"]."$uniqueNumber";
+echo $nameOfFile;
 echo "<pre/>";
 print_r($blog);
+
 ###########################################################
 if(strlen($wpis)>0){
-    $blog->addEntry($wpis);
+    $blog->addEntry($wpis, $nameOfFile);
 }
-// print_r($_FILES);
-// $uniqueNumber1 = rand(10, 99);
-// $nameOfFile1 = $date["year"].$date["mon"].$date["mday"].$date["hours"].$date["minutes"].$date["seconds"]."$uniqueNumber1";
-// file_put_contents($nazwaBlogu."\\".$nameOfFile1, $wpis);
 if(isset($_FILES)){
-    $blog->addAttachments($_FILES);
+    $blog->addAttachments($_FILES, $nameOfFile);
 }    
     
 
-// foreach($_FILES as $file){
-//     $uniqueNumber2 = rand(10, 99);
-//     $nameOfFile = $date["year"].$date["mon"].$date["mday"].$date["hours"].$date["minutes"].$date["seconds"]."$uniqueNumber2";
-//     if($file["error"] == 0){
-//     $extension = explode(".", $file["name"]); //separate by "."
-//     move_uploaded_file($file["tmp_name"], $nazwaBlogu."\\".$nameOfFile.".".$extension[1]);
-//     }
-// }
+
 
 
 ?>
+<a href="menu.html">Powrót do menu</a>

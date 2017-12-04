@@ -1,6 +1,8 @@
 <?php
 session_start();
 $nazwa = $_GET['nazwa'];
+$dataForm = date("Y-m-d");
+// echo $dataForm;
 $_SESSION['nazwa'] = $nazwa;
 $fileContent = file_get_contents($nazwa."\\info.txt");
 $matches;
@@ -31,6 +33,9 @@ preg_match($pattern, $fileContent, $matches);
 	<input type="file" name="file2" value="Dodaj załącznik"/><br/><br/>
 	<p>załącznik 3:</p>
 	<input type="file" name="file3" value="Dodaj załącznik"/><br/><br/>
+	<p>Data: </p>
+	<input type="date" name="date" value=<?=$dataForm;?> required><br/><br/>
+	<input type="time" name="time"  required><br/><br/>
 	<input type="submit" value="Dodaj" /><br/><br/>
     <input type="reset" value="Wyczyść" />
 </form>

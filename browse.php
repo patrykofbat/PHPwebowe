@@ -7,7 +7,7 @@ $new;
 $i = 1;
 $pattern = "/^\\w+/";
 echo "<pre>";
-print_r($_SESSION);
+// print_r($_SESSION);
 
 foreach($arrayWithContent as $file){ // loop through current dir
     if(is_dir($file)){
@@ -28,7 +28,10 @@ foreach($arrayWithContent as $file){ // loop through current dir
     <?php endforeach ?>
 </select>
 <input type="submit" value="Wybierz blog"/><br/><br/>
-<a href="menu.html">Powrót do menu</a>
+<a href="menu.html">Powrót do menu</a><br/>
+<a href="check.php">Stwórz własny blog.</a><br/>
+<a href="check2.php">Dodaj wpis do własnego blogu.</a><br/>
+<a href="check3.php">Przeglądaj dostępne blogi.</a><br/>
 
 
 </form>
