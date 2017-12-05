@@ -13,6 +13,15 @@ $_SESSION["$newBlog->nameOfBlog"] = $newBlog;
 
 
 
+foreach($_SESSION as $key){
+    if(is_object($key)){
+        if($key->userName == $_POST['userName']){
+            header("refresh:5; url=$url");
+            echo "Przykro nam ale nazwa uzytkownika jest juz zajeta, zostaniesz teraz przekierowany do menu głównego.";
+        }
+}
+    
+}
 if(file_exists($dir)){
     header("refresh:5; url=$url");
     echo "Przykro nam ale nazwa blogu jest juz zajeta, zostaniesz teraz przekierowany do menu głównego.";
