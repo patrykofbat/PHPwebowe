@@ -5,7 +5,7 @@ session_start();
 
 #echo getcwd()."\\".$_POST['blogName']; #getcwd() get absoulte path of current directory
 
-$dir=getcwd()."\\".$_POST['blogName'];
+$dir=getcwd()."/".$_POST['blogName'];
 $url='http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "/PHPwebowe" . "/menu.html";
 //create new Blog
 $newBlog = new Blog($_POST['userName'], $_POST['pwd'], $_POST['blogName'], $_POST['description']);
