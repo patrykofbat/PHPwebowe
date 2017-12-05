@@ -5,7 +5,7 @@ $arrayWithContent = scandir(getcwd());
 $matchesHaslo;
 $matchesLogin;
 $matchesBlog;
-$url='http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "PHPwebowe/" . "/blog.php";
+$url='http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "/PHPwebowe" . "/blog.php";
 $url2 = 'http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "/PHPwebowe" . "/formManageBlog.html";
 $new;
 $i = 1;
