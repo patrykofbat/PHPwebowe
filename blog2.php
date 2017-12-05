@@ -62,7 +62,7 @@ $attachFormat = substr($explosion[0], 0,strlen($entry)-2);
 <input type="hidden" name="nameOfBlog" value=<?=$nameOfBlog?>>
 <input type="hidden" name="iteracje" value=<?=$nameOfBlog?>>
 <input type="submit" value="Dodaj komentarz"/><br/><br/>
-<input type="reset" value="Wyczyc"/><br/><br/>
+<input type="reset" value="Wyczyść"/><br/><br/>
 <?php $iterator+=1; ?>
 <?php endforeach ?>
 <input type="hidden" name="iteracje" value=<?=$iterator-=1?>>
