@@ -2,7 +2,7 @@
 echo(file_get_contents("header.html"));
 require_once "classBlog.php";
 session_start();
-$flaga == 1;
+$flaga = 1;
 
 #echo getcwd()."\\".$_POST['blogName']; #getcwd() get absoulte path of current directory
 
