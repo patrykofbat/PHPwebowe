@@ -44,7 +44,7 @@ class Blog{
 
                         if($separate[0] == "info"){
                             $nameOfBlog = $blog;
-                            $info = file_get_contents($blog."\\"."info.txt");
+                            $info = file_get_contents($blog."/"."info.txt");
                             preg_match($patternLogin, $info, $matchesLogin); // get login from file 
                             preg_match($patternHaslo, $info, $matchesPwd); // get pwd from file 
                             preg_match($patternDes, $info, $matchesDes);
@@ -81,14 +81,14 @@ class Blog{
     public function createInfo($dir){
         $dir = str_replace(" ","_","$dir");
         mkdir($dir);
-        $path = $dir."\\info.txt";
+        $path = $dir."/info.txt";
         file_put_contents($path, "Nazwa blogu $this->nameOfBlog\nNazwa użytkownika $this->userName\nHasło $this->password\nOpis bloga $this->description\n"); //write info to file
         
     }
     public function addEntry($entry, $name){
         $nameOfFile = $name;
         $this->arrayWithEntries[] = $nameOfFile;
-        file_put_contents($this->nameOfBlog."\\".$nameOfFile, $entry);
+        file_put_contents($this->nameOfBlog."/".$nameOfFile, $entry);
 
     }
 
@@ -100,7 +100,7 @@ class Blog{
             if($file["error"] == 0){
                 $extension = explode(".", $file["name"]); //separate by "."
                 $this->arrayWithAttachments[] = $nameOfFile.".".$extension[1];
-                move_uploaded_file($file["tmp_name"], $this->nameOfBlog."\\".$nameOfFile.".".$extension[1]);
+                move_uploaded_file($file["tmp_name"], $this->nameOfBlog."/".$nameOfFile.".".$extension[1]);
             }
         }
     }

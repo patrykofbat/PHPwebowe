@@ -12,12 +12,12 @@ $url='http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "/PHPwebowe" . "/browse.p
 // echo "<pre/>";
 // print_r($_POST);
 
-if(!is_file($_POST["nameOfBlog"]."\\".$nameOfDir)){
-    mkdir($_POST["nameOfBlog"]."\\".$nameOfDir);
+if(!is_file($_POST["nameOfBlog"]."/".$nameOfDir)){
+    mkdir($_POST["nameOfBlog"]."/".$nameOfDir);
     for($i=1;$i<=$_POST["iteracje"];$i++){
         if(strlen($_POST[$i]) != 0){
             $data ="Rodzaj komentarza ".$_POST["typeOfComment".$i]."\n"."Data wyslania ".$dataWyslania."\n"."Nadawca ".$_POST["nazwaNadawcy".$i]."\n"."Tresc ".$_POST[$i];
-            file_put_contents($_POST["nameOfBlog"]."\\".$nameOfDir."\\".($i-1), $data);
+            file_put_contents($_POST["nameOfBlog"]."/".$nameOfDir."/".($i-1), $data);
         }
     }
 }

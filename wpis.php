@@ -19,7 +19,7 @@ $flag = true;
 foreach($arrayWithContent as $file){ // loop for blog through current dir
     if(is_dir($file)){
         if(preg_match($pattern, $file, $new) == 1){
-            $fileContent = file_get_contents($new[0]."\\info.txt");
+            $fileContent = file_get_contents($new[0]."/info.txt");
             preg_match($patternLogin, $fileContent, $matchesLogin); // get login from file 
             preg_match($patternHaslo, $fileContent, $matchesHaslo); // get pwd from file 
             if($userName == $matchesLogin[1]){  // check login

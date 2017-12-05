@@ -13,7 +13,7 @@ $iterZal=1;
 <?php foreach($blog->arrayWithEntries as $entry) : ?>
 <?php echo "######################################<br/>"?>
 <?php echo "<h2>Wpis $iterator</h2>"; ?>
-<?= $content = file_get_contents($blog->nameOfBlog."\\".$entry); ?>
+<?= $content = file_get_contents($blog->nameOfBlog."/".$entry); ?>
 <h3>Załączniki</h3>
 <?php foreach($blog->arrayWithAttachments as $attach): ?>
 <?php
@@ -36,8 +36,8 @@ $attachFormat = substr($explosion[0], 0,strlen($entry)-2);
                 $ext = explode(".", $con);
                 if(isset($ext[1])){
                         if($ext[1] == "k"){
-                                if(is_file($nameOfBlog."\\".$con."\\".($newIter))){
-                                        $content = file_get_contents($nameOfBlog."\\".$con."\\".($newIter));
+                                if(is_file($nameOfBlog."/".$con."/".($newIter))){
+                                        $content = file_get_contents($nameOfBlog."/".$con."/".($newIter));
                                         // echo "<h3>Komentarze<br/></h3>";
                                         echo $content;
                                         echo "<br/><br/>";

@@ -4,7 +4,7 @@ $nazwa = $_GET['nazwa'];
 $dataForm = date("Y-m-d");
 // echo $dataForm;
 $_SESSION['nazwa'] = $nazwa;
-$fileContent = file_get_contents($nazwa."\\info.txt");
+$fileContent = file_get_contents($nazwa."/info.txt");
 $matches;
 $pattern = "/Opis bloga(.+)/";
 preg_match($pattern, $fileContent, $matches);
