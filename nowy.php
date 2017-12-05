@@ -15,7 +15,6 @@ $_SESSION["$newBlog->nameOfBlog"] = $newBlog;
 
 
     
-}
 if(file_exists($dir)){
     header("refresh:5; url=$url");
     echo "Przykro nam ale nazwa blogu jest juz zajeta, zostaniesz teraz przekierowany do menu głównego.";
@@ -29,10 +28,12 @@ else{
                 header("refresh:5; url=$url");
             }
     }
-    if($flaga == 1)
-    $newBlog->createInfo($dir);
-    header("refresh:5; url=$url");
-    echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
+}
+    if($flaga == 1){
+        $newBlog->createInfo($dir);
+        header("refresh:5; url=$url");
+        echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
+    }
     
 }
 ?>
