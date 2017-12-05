@@ -4,7 +4,7 @@ $date = getdate();
 $uniqueNumber = rand(10, 99);
 $nameOfDir = $date["year"].$date["mon"].$date["mday"].$date["hours"].$date["minutes"].$date["seconds"].$uniqueNumber.".k";
 $dataWyslania = $date["year"]."-".$date["mon"]."-".$date["mday"].", ".$date["hours"].":".$date["minutes"].":".$date["seconds"];
-$url='http://'. $_SERVER['SERVER_NAME'] . "\\" . "PHPwebowe\\" . "browse.php";
+$url='http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "/PHPwebowe" . "browse.php";
 // echo $dataWyslania;
 
 // echo $nameOfDir;
