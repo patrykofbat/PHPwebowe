@@ -1,4 +1,5 @@
 <?php
+echo(file_get_contents("header.html"));
 $userName=$_POST['userName'];  // saving POST data
 $pwd=md5($_POST['pwd']); //crypt password
 $arrayWithContent = scandir(getcwd());

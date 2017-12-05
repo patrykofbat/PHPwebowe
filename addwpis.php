@@ -1,4 +1,5 @@
 <?php
+echo(file_get_contents("header.html"));
 require_once "classBlog.php"; 
 session_start();
 echo "<pre>";

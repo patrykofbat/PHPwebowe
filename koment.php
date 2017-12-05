@@ -1,4 +1,5 @@
 <?php
+echo(file_get_contents("header.html"));
 session_start();
 $date = getdate();
 $uniqueNumber = rand(10, 99);
