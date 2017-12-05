@@ -9,8 +9,7 @@ $flaga = 1;
 $dir=getcwd()."/".$_POST['blogName'];
 $url='http://'. $_SERVER['SERVER_NAME'] . "/~papior" . "/PHPwebowe" . "/menu.html";
 //create new Blog
-$newBlog = new Blog($_POST['userName'], $_POST['pwd'], $_POST['blogName'], $_POST['description']);
-$_SESSION["$newBlog->nameOfBlog"] = $newBlog;
+
 
 
 
@@ -21,20 +20,27 @@ if(file_exists($dir)){
 }
 else{
     foreach($_SESSION as $key){
+        // echo "<pre/>";
+        // print_r($key);
+        // print_r($_POST['userName']);
         if(is_object($key)){
             if($key->userName == $_POST['userName']){
                 $flaga = 0;
                 echo "Przykro nam ale nazwa uzytkownika jest juz zajeta, zostaniesz teraz przekierowany do menu głównego.";
+                // exit;
                 header("refresh:5; url=$url");
             }
+        }
     }
 
-}
-if($flaga == 1){
-    $newBlog->createInfo($dir);
-    header("refresh:5; url=$url");
-    echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
-}
+    // exit;
+    if($flaga == 1){
+        $newBlog = new Blog($_POST['userName'], $_POST['pwd'], $_POST['blogName'], $_POST['description']);
+        $_SESSION["$newBlog->nameOfBlog"] = $newBlog;
+        $newBlog->createInfo($dir);
+        header("refresh:5; url=$url");
+        echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
+    }
 }
 
 
