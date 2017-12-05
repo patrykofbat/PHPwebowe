@@ -29,11 +29,11 @@ else{
             }
     }
 }
-    if($flaga == 1){
-        $newBlog->createInfo($dir);
-        header("refresh:5; url=$url");
-        echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
-    }
-    
+}
+
+if($flaga == 1){
+    $newBlog->createInfo($dir);
+    header("refresh:5; url=$url");
+    echo "Pomyślnie założyłeś bloga, zostaniesz teraz przekierowany do menu głównego.";
 }
 ?>
