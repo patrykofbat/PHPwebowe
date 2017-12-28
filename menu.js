@@ -3,6 +3,7 @@
 function loadDoc(){
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", "chatData.txt", true);
+  xhttp.setRequestHeader("Cache-Control", "no-cache");
   xhttp.send();
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){

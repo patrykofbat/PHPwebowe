@@ -2,25 +2,26 @@
 session_start();
 $nazwa = $_GET['nazwa'];
 $dataForm = date("Y-m-d");
-// echo $dataForm;
-$_SESSION['nazwa'] = $nazwa;
 $fileContent = file_get_contents($nazwa."/info.txt");
 $matches;
+$matchesBlog;
 $pattern = "/Opis bloga(.+)/";
+$patternBlog = "/Nazwa blogu(.+)/";
 preg_match($pattern, $fileContent, $matches);
+preg_match($patternBlog, $fileContent, $matchesBlog);
 
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
- 
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Mój blog</title>
 </head>
 <body>
-	<h2>Nazwa blogu - <?php echo "$nazwa";?></h2>
+	<h2>Nazwa blogu - <?php echo "$matchesBlog[1]";?></h2>
 	<h3>Opis</h3>
 	<?php echo "$matches[1]"; ?>
 	<p>########################################################</p>
@@ -41,7 +42,7 @@ preg_match($pattern, $fileContent, $matches);
 </form>
 <br/>
 <a href = "menu.html">Powrót do menu</a>
-    
-	
+
+
 </body>
 </html>

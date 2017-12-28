@@ -19,65 +19,6 @@ class Blog{
         $this->arrayWithComments = array();
     }
 
-    public static function update(){
-        $patternForBlog = "/^\w+/";
-        $content = scandir(getcwd());
-        $patternLogin = "/Nazwa użytkownika (.+)/";
-        $patternHaslo = "/Hasło (.+)/";
-        $patternDes = "/Opis bloga (.+)/";
-        $matchesPwd;
-        $matchesLogin;
-        $matchesDes;
-        foreach($content as $blog){
-            if(is_dir($blog) && preg_match($patternForBlog, $blog)){
-                $arrayWithAttachments = array();
-                $arrayWithEntries = array();
-                $arrayWithComments = array();
-                $userName;
-                $password;
-                $nameOfBlog;
-                $description;
-                $contentOfBlog = scandir($blog);
-                foreach($contentOfBlog as $file){
-                    $separate = explode(".", $file);
-                    if(isset($separate[1])){
-
-                        if($separate[0] == "info"){
-                            $nameOfBlog = $blog;
-                            $info = file_get_contents($blog."/"."info.txt");
-                            preg_match($patternLogin, $info, $matchesLogin); // get login from file 
-                            preg_match($patternHaslo, $info, $matchesPwd); // get pwd from file 
-                            preg_match($patternDes, $info, $matchesDes);
-                            $userName = $matchesLogin[1];
-                            $password = $matchesPwd[1];
-                        }
-                        else{
-                            if(strlen($separate[1])>1){
-                                $arrayWithAttachments[] = $file;
-                            }
-                            else if($separate[1] == "k"){
-                                $arrayWithComments[] = $file;
-                            }
-                        }
-
-                    }
-                    else{
-                        $arrayWithEntries[] = $file;
-                    }
-                }
-                $obj = new Blog($userName, $password, $blog, $matchesDes[1]);
-                $obj->arrayWithAttachments = $arrayWithAttachments;
-                unset($arrayWithAttachments);
-                $obj->arrayWithEntries = $arrayWithEntries;
-                unset($arrayWithEntries);
-                $obj->arrayWithComments = $arrayWithComments;
-                unset($arrayWithComments);
-                $_SESSION[$blog] = $obj;
-                // here we create an object 
-            }
-        }
-    }
-
     public function createInfo($dir){
         $dir = str_replace(" ","_","$dir");
         mkdir($dir);
