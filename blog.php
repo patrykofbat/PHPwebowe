@@ -27,6 +27,7 @@ preg_match($patternBlog, $fileContent, $matchesBlog);
 	<p>########################################################</p>
 <p>Dodaj wpis: </p>
 <form action = "addwpis.php" method = "post" enctype="multipart/form-data">
+	<input type="hidden" name="userName" value=<?=$nazwa;?>>
 	<textarea name="wpis" style="width:300px; height:100px"></textarea><br/><br/>
 	<p>załącznik 1:</p>
 	<input type="file" name="file" value="Dodaj załącznik"/><br/><br/>
@@ -35,14 +36,14 @@ preg_match($patternBlog, $fileContent, $matchesBlog);
 	<p>załącznik 3:</p>
 	<input type="file" name="file3" value="Dodaj załącznik"/><br/><br/>
 	<p>Data: </p>
-	<input type="date" name="date" value=<?=$dataForm;?> required><br/><br/>
-	<input type="time" name="time"  required><br/><br/>
+	<input type="date" id="data" name="date" value=<?=$dataForm;?> required><br/><br/>
+	<input type="time" id="time" name="time"  required><br/><br/>
 	<input type="submit" value="Dodaj" /><br/><br/>
     <input type="reset" value="Wyczyść" />
 </form>
 <br/>
 <a href = "menu.html">Powrót do menu</a>
-
+<script src="validate.js" charset="utf-8" type="text/javascript"></script>
 
 </body>
 </html>

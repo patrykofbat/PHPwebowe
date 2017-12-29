@@ -2,7 +2,7 @@
 echo(file_get_contents("header.html"));
 require_once "classBlog.php";
 session_start();
-$nameOfBlog = $_GET["nazwa"];
+$name = $_GET["nazwa"];
 $blog = $_SESSION[$nameOfBlog];
 $nameOfBlog = $blog->nameOfBlog;
 echo"<pre>";
@@ -71,4 +71,3 @@ $attachFormat = substr($explosion[0], 0,strlen($entry)-2);
 <a href="check.php">Stwórz własny blog.</a><br/>
 <a href="check2.php">Dodaj wpis do własnego blogu.</a><br/>
 <a href="check3.php">Przeglądaj dostępne blogi.</a><br/>
-

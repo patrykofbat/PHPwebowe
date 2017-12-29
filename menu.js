@@ -1,4 +1,4 @@
-
+var interval = null;
 // sending ajax request to server for data for chatbox
 function loadDoc(){
   var xhttp = new XMLHttpRequest();
@@ -12,6 +12,18 @@ function loadDoc(){
     }
   }
 }
+
+function triggerInterval() {
+  interval = setInterval(function(){ // update chatbox
+    loadDoc();
+  },1000);
+}
+
+function stopInterval(){
+  console.log("stop!");
+  clearInterval(interval);
+}
+
 
 
 function postByAjax(data){
@@ -27,13 +39,19 @@ function postByAjax(data){
 
 // when document is mounted
 document.onreadystatechange = function(){
-  loadDoc();
-
-  setInterval(function(){ // update chatbox per 2,5 sek
-    loadDoc();
-  },1000);
-
   if(document.readyState == "complete"){
+    document.getElementById('check').addEventListener("change", function(){
+      console.log(this.checked);
+      if(this.checked){ // active
+        triggerInterval();
+      }
+      else{ //inactive
+        stopInterval();
+        document.getElementById('chat').innerHTML = "";
+
+      }
+    });
+
       document.getElementById('Btn').addEventListener("click", function(event){
         event.preventDefault();
         var nick = document.getElementById('userName').value;
