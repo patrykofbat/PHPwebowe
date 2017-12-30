@@ -1,8 +1,2 @@
-Witam : witam
-asd: asd
-asd: asd
-asd: asd
-asd: asd
-asd: asd
-asd: asd
+Patryk: witam
 asd: asd

@@ -1,29 +1,33 @@
-var interval = null;
+var timestamp = null;
+var flag = false;
+var timeout = null;
 // sending ajax request to server for data for chatbox
-function loadDoc(){
+function loadDoc(timestamp){
+  var queryString = {'timestamp' : timestamp};
+
   var xhttp = new XMLHttpRequest();
-  xhttp.open("GET", "chatData.txt", true);
+
+  xhttp.open("GET", "longPollServer.php", true);
   xhttp.setRequestHeader("Cache-Control", "no-cache");
-  xhttp.send();
+  xhttp.send(queryString);
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
-      console.log(this.responseText);
-      document.getElementById('chat').innerHTML = this.responseText.replace(/(\r\n|\n|\r)/gm, "<br>");
+      var obj = JSON.parse(this.response);
+      document.getElementById('chat').innerHTML = obj.data_from_file.replace(/(\r\n|\n|\r)/gm, "<br>");
+      timestamp = obj.timestamp;
     }
   }
 }
 
-function triggerInterval() {
-  interval = setInterval(function(){ // update chatbox
-    loadDoc();
-  },1000);
-}
 
-function stopInterval(){
-  console.log("stop!");
-  clearInterval(interval);
-}
 
+function recursionSetTimeout(){
+    timeout = setTimeout(function() {
+    console.log("rekursja leci elo!");
+    loadDoc(timestamp);
+    recursionSetTimeout();
+  },5000);
+}
 
 
 function postByAjax(data){
@@ -32,7 +36,7 @@ function postByAjax(data){
   xhttp.send(data);
   xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200){
-      loadDoc();
+      loadDoc(timestamp);
     }
   }
 }
@@ -41,13 +45,15 @@ function postByAjax(data){
 document.onreadystatechange = function(){
   if(document.readyState == "complete"){
     document.getElementById('check').addEventListener("change", function(){
-      console.log(this.checked);
       if(this.checked){ // active
-        triggerInterval();
+        flag = true;
+        loadDoc(timestamp);
+        recursionSetTimeout();
       }
       else{ //inactive
-        stopInterval();
+        clearTimeout(timeout);
         document.getElementById('chat').innerHTML = "";
+        flag = false;
 
       }
     });
@@ -59,7 +65,8 @@ document.onreadystatechange = function(){
         var formData = new FormData();
         formData.append('data', data);
         formData.append('userName', nick);
-        postByAjax(formData);
+        if(flag == true)
+          postByAjax(formData);
     });
   }
 }
