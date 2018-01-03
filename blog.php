@@ -26,18 +26,17 @@ preg_match($patternBlog, $fileContent, $matchesBlog);
 	<?php echo "$matches[1]"; ?>
 	<p>########################################################</p>
 <p>Dodaj wpis: </p>
-<form action = "addwpis.php" method = "post" enctype="multipart/form-data">
+<form id="form" enctype="multipart/form-data">
 	<input type="hidden" name="userName" value=<?=$nazwa;?>>
 	<textarea name="wpis" style="width:300px; height:100px"></textarea><br/><br/>
-	<p>załącznik 1:</p>
-	<input type="file" name="file" value="Dodaj załącznik"/><br/><br/>
-	<p>załącznik 2:</p>
-	<input type="file" name="file2" value="Dodaj załącznik"/><br/><br/>
-	<p>załącznik 3:</p>
-	<input type="file" name="file3" value="Dodaj załącznik"/><br/><br/>
+	<p>Dodaj zalacznik</p>
+	<div id="zalaczniki">
+		<input type="file" name="file" value="Dodaj załącznik"/><br/><br/>
+	</div>
+	<button type="button" name="button" onclick="handleSumbit()">Dodaj kolejny</button>
 	<p>Data: </p>
-	<input type="date" id="data" name="date" value=<?=$dataForm;?> required><br/><br/>
-	<input type="time" id="time" name="time"  required><br/><br/>
+	<input type="text" id="date"><br/><br/>
+	<input type="text" id="time"><br/><br/>
 	<input type="submit" value="Dodaj" /><br/><br/>
     <input type="reset" value="Wyczyść" />
 </form>

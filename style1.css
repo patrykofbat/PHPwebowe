@@ -25,7 +25,7 @@ body {
     z-index: 99999;
     position: fixed;
     width: 100vw;
-    background-color: deepskyblue;
+    background-color: violet;
     height: 8vh;
     border-bottom: 1px solid rgb(176, 176, 196);
 }
@@ -127,11 +127,15 @@ a.chatboxbtn:hover{
 
 
 #chat{
-  background-color: rgb(135, 160, 181);
+  background-color: pink;
   border: 2px solid rgb(176, 176, 196);
   margin: 5px;
   height: 300px;
   overflow: scroll;
+}
+
+.selectStyle{
+  background-color: red;
 }
 
 

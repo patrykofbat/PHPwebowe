@@ -5,11 +5,11 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
+    <link id="linkStyle" rel="stylesheet" type="text/css" href="style4.css">
     <title>Blogosfera</title>
 </head>
 
-<body>
+<body onload="setStyle()">
     <script src="menu.js"></script>
     <div class="container">
         <div class="header">
@@ -85,9 +85,20 @@
                 id mi congue, ac semper ligula blandit. Aenean nec purus vehicula, rutrum elit quis, ultrices felis. Praesent rhoncus urna quis orci ultrices, in blandit urna pellentesque. Nulla feugiat, purus sed egestas luctus, nisi ante accumsan risus,
                 sit amet dictum elit sapien id metus.
             </p>
+            <div class="selectStyle">
+              <ul>
+                <li class="litem"><a class="navblocks" onclick="changeStyle(1)">Styl 1</a></li>
+                <li class="litem"><a class="navblocks" onclick="changeStyle(2)">Styl 2</a></li>
+                <li class="litem"><a class="navblocks" onclick="changeStyle(3)">Styl 3</a></li>
+                <li class="litem"><a class="navblocks" onclick="changeStyle(4)">Styl 4</a></li>
+              </ul>
+            </div>
+
+
 
 
         </div>
+        <script src="changeStyle.js"></script>
 
 
 
