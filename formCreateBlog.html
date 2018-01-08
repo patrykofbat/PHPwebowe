@@ -5,28 +5,74 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Tworzenie bloga</title>
+    <link id="linkStyle" rel="stylesheet" type="text/css" href="style4.css">
+    <title>Blogosfera</title>
 </head>
 
-<body>
-    <div style="width:100vw">
-        <h2 style="text-align:center">Utwórz blog</h2>
-        <form action="nowy.php" method="post" style="text-align:center">
+<body onload="setStyle()">
+    <script src="menu.js"></script>
+    <div class="container">
+        <div class="header">
+            <h2>Witaj w blogosferze !</h2>
+        </div>
 
-            <label>Nazwa użytkownika  <input name="userName" required/><br/><br/></label>
+        <div class="menu">
+            <h4>Menu</h4>
+            <ul>
+                <li class="litem"><a href="formCreateBlog.html" class="navblocks">Stwórz blog.</a></li>
+                <li class="litem"><a href="browse.php" class="navblocks">Przeglądaj blogi.</a></li>
+                <li class="litem"><a href="menu.html" class="navblocks">Powrót do menu.</a></li>
 
-            <label>Nazwa bloga  <input name="blogName" required/><br/><br/></label>
+            </ul>
+        </div>
 
-            <label>Hasło <input type="password" name="pwd" required/><br/><br/></label>
+        <div class="ad">
+            <p>
+                <h3>Chatbox</h3>
+            </p>
+            <div class="chatbox">
+            </div>
+            <div id="chat">
+            </div>
+            <form class="chatAdd">
+                <label>Nick: </label>
+                <input type="text" name="userName" id="userName" required><br><br>
+                <label>Wiadomość: </label>
+                <input type="text" name="fieldText" id="fieldText"><br><br>
+                <input type="button" name="submitBtn" id="Btn" value="Wyslij"><br><br>
+                <label id="labelCheck">Wlacz</label>
+                <input type="checkbox" id="check">
 
-            <label>Opis bloga  <textarea  name="description" style="width:300px; height:100px"></textarea><br/><br/></label>
-            <input type="submit" value="Załóż" /><br/><br/>
-            <input type="reset" value="Wyczyść" /><br/><br/>
-            <a href="menu.html">Powrót do menu</a><br/>
-            <a href="check.php">Stwórz własny blog.</a><br/>
-            <a href="check2.php">Dodaj wpis do własnego blogu.</a><br/>
-            <a href="check3.php">Przeglądaj dostępne blogi.</a><br/>
-        </form>
+            </form>
+
+        </div>
+        <div class="content">
+            <h2 style="text-align:center">Utwórz blog</h2>
+            <form action="nowy.php" method="post" style="text-align:center">
+
+                <label>Nazwa użytkownika  <input name="userName" required/><br/><br/></label>
+
+                <label>Nazwa bloga  <input name="blogName" required/><br/><br/></label>
+
+                <label>Hasło <input type="password" name="pwd" required/><br/><br/></label>
+
+                <label>Opis bloga  <textarea  name="description" style="width:300px; height:100px"></textarea><br/><br/></label>
+                <input type="submit" value="Załóż" /><br/><br/>
+                <input type="reset" value="Wyczyść" /><br/><br/>
+
+            </form>
+
+            <div class="selectStyle">
+                <ul>
+                    <li class="litem"><a class="navblocks" onclick="changeStyle(1)">Styl 1</a></li>
+                    <li class="litem"><a class="navblocks" onclick="changeStyle(2)">Styl 2</a></li>
+                    <li class="litem"><a class="navblocks" onclick="changeStyle(3)">Styl 3</a></li>
+                    <li class="litem"><a class="navblocks" onclick="changeStyle(4)">Styl 4</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <script src="changeStyle.js"></script>
     </div>
 </body>
 
